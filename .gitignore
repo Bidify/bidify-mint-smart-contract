@@ -1,3 +1,4 @@
 node_modules
 .env
 cache-zk/solidity-files-cache.json
+.vscode

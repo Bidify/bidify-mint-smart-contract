@@ -25,9 +25,9 @@ contract BidifyFactory {
     // event CollectionCreated(string name, string symbol, address indexed createdBy);
 
     function calculateCost(uint amount) public pure returns(uint cost) {
-        if(amount < 10) cost = 1e15;
-        else if(amount < 100) cost = 1e16;
-        else cost = 1e17;
+        if(amount < 10) cost = 1e14;
+        else if(amount < 100) cost = 1e15;
+        else cost = 1e16;
     }
 
     function mint(string memory uri, uint count, string memory collection, string memory symbol, address platform) external payable {

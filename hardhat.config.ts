@@ -7,7 +7,7 @@ module.exports = {
     compilerSource: "binary",
     settings: {},
   },
-  defaultNetwork: "zkSyncTestnet",
+  defaultNetwork: "zkSyncMainnet",
 
   networks: {
     zkSyncTestnet: {
