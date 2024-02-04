@@ -4,7 +4,6 @@ pragma solidity ^0.8.4;
 import "./BidifyToken.sol";
 
 contract BidifyFactory {
-    address public dev;
     address public admin;
     struct Collection {
         address platform;
@@ -14,12 +13,11 @@ contract BidifyFactory {
     mapping(address => Collection[]) public collectionOwned;
     // mapping(string => address) public collectionAddress;
     constructor() {
-        dev = msg.sender;
         admin = msg.sender;
     }
 
     modifier onlyManager() {
-        require(msg.sender == dev, "only admin!");
+        require(msg.sender == admin, "only admin!");
         _;
     }
     // event CollectionCreated(string name, string symbol, address indexed createdBy);
@@ -44,12 +42,8 @@ contract BidifyFactory {
         multipleMint(uri, count, tokenAddress);
 
         uint256 _cost = msg.value;
-        uint256 ownerFee = _cost / 2;
-        (bool succeedOwner, ) = payable(admin).call{value: ownerFee}("");
+        (bool succeedOwner, ) = payable(admin).call{value: _cost}("");
         require(succeedOwner, "Failed to withdraw to the owner");
-        _cost -= ownerFee;
-        (bool succeedDev, ) = payable(dev).call{value: _cost}("");
-        require(succeedDev, "Failed to withdraw to the dev");
         _cost = 0;
     }
     
@@ -67,10 +61,6 @@ contract BidifyFactory {
     }
     function getCollections() external view returns(Collection[] memory) {
         return collectionOwned[msg.sender];
-    }
-
-    function setdev(address to) external onlyManager {
-        dev = to;
     }
 
     function setAdmin(address to) external onlyManager {

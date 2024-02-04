@@ -1,27 +1,32 @@
-import "@matterlabs/hardhat-zksync-deploy";
-import "@matterlabs/hardhat-zksync-solc";
+import { HardhatUserConfig } from "hardhat/config";
+import "@nomicfoundation/hardhat-toolbox";
 
-module.exports = {
-  zksolc: {
-    version: "1.3.5",
-    compilerSource: "binary",
-    settings: {},
-  },
-  defaultNetwork: "zkSyncMainnet",
+require("dotenv").config();
 
+const PRIVATE_KEY: any = process.env.PRIVATE_KEY;
+const ETHERSCAN_KEY: any = process.env.ETHERSCAN_KEY;
+const SEPOLIA_URL: any = process.env.SEPOLIA_URL;
+const GOERLI_URL: any = process.env.GOERLI_URL;
+
+const config: HardhatUserConfig = {
+  solidity: "0.8.19",
+  defaultNetwork: "sepolia",
   networks: {
-    zkSyncTestnet: {
-      url: "https://testnet.era.zksync.dev",
-      ethNetwork: "goerli", // Can also be the RPC URL of the network (e.g. `https://goerli.infura.io/v3/<API_KEY>`)
-      zksync: true,
+    sepolia: {
+      url: SEPOLIA_URL,
+      accounts: [PRIVATE_KEY],
     },
-    zkSyncMainnet: {
-      url: "https://mainnet.era.zksync.io",
-      ethNetwork: "mainnet", // Can also be the RPC URL of the network (e.g. `https://goerli.infura.io/v3/<API_KEY>`)
-      zksync: true,
+    goerli: {
+      url: GOERLI_URL,
+      accounts: [PRIVATE_KEY],
     },
   },
-  solidity: {
-    version: "0.8.4",
+  etherscan: {
+    apiKey: ETHERSCAN_KEY,
+  },
+  sourcify: {
+    enabled: true,
   },
 };
+
+export default config;
