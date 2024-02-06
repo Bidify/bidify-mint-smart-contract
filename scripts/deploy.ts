@@ -5,17 +5,19 @@ async function main() {
 
   console.log("Deploying contracts with the account:", deployer.address);
 
-  // const bidi = await ethers.getContractFactory("BidifyFactory");
-  // const token = await bidi.deploy();
+  ///////factory deploy
+  const bidi = await ethers.getContractFactory("BidifyFactory");
+  const token = await bidi.deploy();
 
-  const bidi = await ethers.getContractFactory("BidifyToken");
-  const token = await bidi.deploy("BidifyToken", "BiToken");
 
-  // const token = await bidi.deploy("BidiFactory", "BFactory");
+  ///////token deploy
+  // const bidi = await ethers.getContractFactory("BidifyToken");
+  // const token = await bidi.deploy("BidifyToken", "BTC");
 
-  // const token = await ethers.deployContract("BidifyToken", ["Bidify", "Bidify"]);
+  
 
   console.log("Token address:", await token.getAddress());
+
 }
 
 main()
@@ -52,3 +54,8 @@ main()
 //   console.error(error);
 //   process.exitCode = 1;
 // });
+
+
+
+
+

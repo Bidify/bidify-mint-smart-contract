@@ -1,7 +1,9 @@
 {
   "dependencies": {
+    "@nomiclabs/hardhat-web3": "^2.0.0",
     "dotenv": "^16.4.1",
-    "hardhat": "^2.19.5"
+    "hardhat": "^2.19.5",
+    "web3": "^4.4.0"
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^4.0.0",

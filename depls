@@ -7,3 +7,17 @@ goerli: {
     factory: 0x42f12c2BCee63eFC1894f47D37e9535759C19ecA,
     token: 0x0772B464e1aA4b3184a2FC440cd854808fBa7189
 }
+
+
+
+
+
+
+
+
+
+
+goerli: {
+    factory: 0xc9BE5EC3AAAafaaab3aD973Bc64596f11D8401A2,
+    token: 0x63A7dc874e5339E43a7868d07b1640012eCfe064
+}
